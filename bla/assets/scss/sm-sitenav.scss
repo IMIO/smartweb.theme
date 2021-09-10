@@ -1,0 +1,265 @@
+$nav-subtree-title-color : #008FD2;
+#portal-globalnav-wrapper{
+    z-index: 2;
+}
+@media screen and (max-width:992px) {
+    .collapse:not(.show) {
+        display: block;
+    }
+    // a supp 
+    #portal-searchbox{
+        display: none;
+    }
+}
+.mask-menu{
+    opacity: 0;
+    z-index: 1;
+    visibility: hidden;
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: opacity .05s,visibility 0s linear .25s;
+    background-color: rgba(15, 11, 11, 0.76);
+}
+
+.mask-menu.in {
+	opacity: 1;
+	visibility: visible;
+	transition: opacity .2s ease,visibility 0s;
+}
+
+#portal-globalnav-collapse, #subsite-navigation{
+    div.has_subtree {
+        border-radius: 10px;
+        & > span {
+            color: $nav-subtree-title-color;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    }
+    .dropdown{
+        .show-nav{
+           & > .nav-link{
+                color: $primary;
+                &[aria-haspopup="true"]{
+                    &:after{
+                        content: url(../svg/arrow-right-blue.svg);
+                        right: 0;
+
+                    }
+                }
+            }
+        }
+        .nav-link{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            &:hover,
+            &:focus{
+                color: $primary;
+            }
+            &[aria-haspopup="true"]{
+                &:after{
+                    content: url(../svg/arrow-right-blue.svg);
+                    content: url(../svg/arrow-right.svg);
+                    position: relative;
+                    right: 11px;
+                    transition: all .2s ease;
+                }
+                &:hover,
+                &:focus{
+                    &:after{
+                        content: url(../svg/arrow-right-blue.svg);
+                    }
+                }
+            }
+        }
+    }
+    .quick-access{
+        .quick-access-title{
+            font-weight: bold;
+            margin-top: 2em;
+            display: block;
+            color: $primary;     
+        }
+        ul{
+            position: relative!important;
+            padding: 0!important;
+            width: auto!important;
+        }
+    }
+    & > ul {
+        @media screen and (min-width:992px){
+            gap: 30px;
+        }
+        & > li{
+            a{
+                padding: 0;
+                &:before{
+                    content: "";       
+                    height: 2px;
+                    position: absolute;
+                    left: 0;
+                    background-color: $yellow;
+                    bottom: 0;
+                    transition: all .3s ease;
+                    right: 0; 
+                    width: 0;
+                }
+                &:focus,
+                &:hover{
+                    &:before{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+    // nav-mobile
+.navbar-toggler{
+    border: 0px!important;
+}
+.navbar-toggler:focus{
+    box-shadow: none!important;
+}
+
+@media screen and (min-width:992px){
+    .has_subtree.dropdown{
+        height: 800px;
+        max-height: 85vh;
+        min-height: 350px;
+        & > ul {
+            overflow-y: auto;
+            max-height: calc(100% - 61px);
+        }
+    }
+    #portal-header{
+        display: grid!important;
+    }
+    #portal-globalnav-wrapper .activated > ul > li > a {
+        color: #fff!important;
+    }
+    html #portal-header #portal-searchbox {
+        order: inherit;
+        grid-column-start: 2;
+        grid-row-start: 1;
+        justify-self: end;
+        max-width: max-content;
+    }
+}
+
+@media screen and (max-width:992px) {
+    #portal-globalnav-collapse{
+        #portal-globalnav > li > .nav-link{
+            border-bottom: 1px solid #ddd;
+            &[aria-haspopup="true"]::after {
+                content: url(../svg/arrow-right-blue.svg);
+                content: url(../svg/arrow-right.svg);
+                position: relative;
+                right: 11px;
+            }
+        }
+    }
+    // SUBSITE NAV
+    #subsite-navigation{
+        #portal-globalnav > li > .nav-link{
+            border-bottom: 1px solid #ddd;
+            &[aria-haspopup="true"]::after {
+                content: url(../svg/arrow-right-blue.svg);
+                content: url(../svg/arrow-right.svg);
+                position: relative;
+                right: 11px;
+            }
+        }
+    }
+}
+//burger button
+.navbar-toggler{
+  display: block;
+  position: relative;
+  background: transparent!important;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  transition: all 0.5s ease;
+  border: 2px solid transparent;
+  .navbar-toggler-icon {
+    display: inline-block;
+    position: absolute;
+    background: #000;
+    margin: 0 auto;
+    width: 18px;
+    height: 2px;
+    top: 50%;
+    left: 0;
+    right: 0;
+    border-radius: 50px;
+    transition: all 0.5s ease;
+    transform: translateY(-1px);
+    &:before,
+    &:after{
+      content: "";
+      border-radius: 50px;
+      position: absolute;
+      margin: 0 auto;
+      background: #000;
+      height: 2px;
+      right: 0;
+      transition: all 0.5s ease;
+    }
+    &:before {
+      bottom: 10px;
+      width: 24px;
+    }
+    &:after {
+      top: 10px;
+      width: 11px;
+
+    }
+  }
+  &[aria-expanded=true] {
+  .navbar-toggler-icon {
+    background: transparent;
+    &:before, &:after {
+      transform-origin: 0 50%;
+      width: 28.28427125px;
+    }
+    &:before {
+      transform: rotateZ(0.78539816rad)
+    }
+    &:after {
+      transform: rotateZ(-0.78539816rad);
+    }
+  }
+  }
+}
+
+#portal-globalnav-wrapper li > .has_subtree .close-nav .close-nav-icon, #subsite-navigation li > .has_subtree .close-nav .close-nav-icon, #portal-globalnav-wrapper #subsite-navigation li > .has_subtree .close-nav .close-nav-icon, #subsite-navigation #subsite-navigation li > .has_subtree .close-nav .close-nav-icon {
+	height: 20px;
+	width: 20px;
+	display: block;
+	background-image: url(../svg/close_black_24dp.svg);
+	padding: 0;
+}
+
+
+////// A SUPPRIMER PLUSTARD
+
+#portal-searchbox{
+    .searchSection{
+        display: none;
+    }
+    [type="text"] {
+        width: 13rem;
+    }
+}
+
+ 

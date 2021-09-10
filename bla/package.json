@@ -1,0 +1,29 @@
+{
+  "name": "plonetheme.barceloneta",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "bootstrap": "^5.0.2",
+    "clean-css-cli": "^5.3.0",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.2.15",
+    "postcss-cli": "^8.3.1",
+    "sass": "^1.32.13",
+    "stylelint-config-twbs-bootstrap": "^2.2.0"
+  },
+  "scripts": {
+    "watch": "run-p watch:css watch:svg",
+    "watch:css": "nodemon --watch assets/scss --ext scss --exec  \"npm run css-main\"",
+    "watch:svg": "nodemon --watch assets/svg --ext svg --exec  \"npm run copy:assets\"",
+    "build": "npm-run-all css-compile-main css-prefix-main css-minify-main",
+    "css-main": "npm-run-all css-compile-main css-prefix-main css-minify-main",
+    "css-compile-main": "sass --style expanded --source-map --embed-sources --no-error-css assets/scss/smartweb.scss:theme/smartweb/css/smartweb.css",
+    "css-prefix-main": "postcss --config postcss.config.js --replace \"theme/smartweb/css/*.css\" \"!theme/smartweb/css/*.min.css\"",
+    "css-minify-main": "cleancss -O1 --format breakWith=lf --with-rebase --source-map --source-map-inline-sources --output theme/smartweb/css/smartweb.min.css theme/smartweb/css/smartweb.css",
+    "css-lint": "stylelint \"scss/**/*.scss\" --cache --cache-location .cache/.stylelintcache",
+    "copy:assets": "cp -ru assets/svg theme/smartweb"
+  }
+}

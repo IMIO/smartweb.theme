@@ -1,0 +1,29 @@
+$headings-color: #000;
+$primary: #008FD2;
+$bg-primary: red;
+@import "./sm-variables.scss";
+@import "../../../plonetheme.barceloneta/scss/barceloneta.scss";
+// @import "../../../plonetheme.common/scss/base.scss";
+@import "./sm-list.scss";
+@import "./sm-sitenav.scss";
+@import "./sm-list-block.scss";
+@import "./sm-list-block-img.scss";
+
+
+// à voir dans html
+.bg-primary {
+	background-color:transparent !important;
+}
+ 
+
+// GLOBAL 
+html, body {
+	max-width: 100%;
+	overflow-x: hidden;
+  }
+
+//// Notes
+
+// j'ai ajouté une div mask-menu dans le index.html du theme: bon ou pas ?
+
+// navbar-expand-md changer navbar-expand-lg
