@@ -38,6 +38,12 @@
   <!-- Content header -->
   <replace css:theme="#portal-top" css:content-children="#portal-top" />
 
+  <!-- move title (h1) into portal-header -->
+  <after css:content-children="#portal-header">
+      <xsl:copy-of select="//h1" />
+  </after>
+  <drop css:content="h1" />
+
   <!-- full-width breadcrumb -->
   <replace css:theme="#above-content" css:content="#viewlet-above-content" />
 
