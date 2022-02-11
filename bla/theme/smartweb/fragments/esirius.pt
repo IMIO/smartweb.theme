@@ -1,4 +1,12 @@
-<div class="esirius">
-  <h3 >Average waiting time to get a guichet meet</h3>
-  <p tal:content="view/message" />
-</div>
+<tal:def tal:define="msg view/message">
+  <tal:if tal:condition="python:not msg == 'closed'">
+    <div class="fragment_esirius">
+      <p tal:replace="structure view/message" />
+    </div>
+  </tal:if>
+  <tal:else tal:condition="python:msg == 'closed'">
+    <div class="fragment_esirius closed">
+      <span class="closed">Fermé</span>
+    </div>
+  </tal:else>
+</tal:def>
