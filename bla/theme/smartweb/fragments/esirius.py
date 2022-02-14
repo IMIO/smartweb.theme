@@ -4,6 +4,7 @@ import requests
 def message(self):
     if "smartweb.esirius_apikey" not in context.portal_registry:
         return ""
+    self.request.response.setHeader("Cache-Control", "no-cache")
     esirius_apikey = context.portal_registry["smartweb.esirius_apikey"]
     response = requests.get(
         f"https://passerelle-braine-l-alleud.test.entrouvert.org/esirius-swi/prod/get_all_indicators?apikey={esirius_apikey}")
